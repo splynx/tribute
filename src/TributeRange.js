@@ -189,8 +189,9 @@ class TributeRange {
     }
 
     getWindowSelection() {
-        if (this.tribute.collection.iframe) {
-            return this.tribute.collection.iframe.contentWindow.getSelection()
+        const {tribute: {current: {element: {ownerDocument}}}} = this
+        if (ownerDocument) {
+            return ownerDocument.getSelection()
         }
 
         return window.getSelection()
@@ -575,6 +576,20 @@ class TributeRange {
         let windowLeft = (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0)
         let windowTop = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0)
 
+        const {tribute: {current: {element: {ownerDocument}}}} = this
+
+        if (ownerDocument !== document) {
+            let frameElement = ownerDocument.defaultView.frameElement;
+
+            if (frameElement) {
+                let iframeRect = frameElement.getBoundingClientRect();
+                if (iframeRect) {
+                    windowTop += iframeRect.y;
+                    windowLeft += iframeRect.x;
+                }
+            }
+        }
+
         let left = 0
         let top = 0
         if (this.menuContainerIsBody) {
@@ -629,6 +644,7 @@ class TributeRange {
         }
 
         markerEl.parentNode.removeChild(markerEl)
+
         return coordinates
     }
 
