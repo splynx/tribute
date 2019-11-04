@@ -4,6 +4,7 @@
 
 A cross-browser `@mention` engine written in ES6, no dependencies. Tested in Firefox, Chrome, iOS Safari, Safari, IE 9+, Edge 12+, Android 4+, and Windows Phone.
 
+- [Difference between original repository](#difference-between-original-repository)
 - [Installing](#installing)
 - [Initializing](#initializing)
 - [A Collection](#a-collection)
@@ -14,6 +15,10 @@ A cross-browser `@mention` engine written in ES6, no dependencies. Tested in Fir
 - [WYSIWYG Editor Support](#wysiwyg-editor-support)
 - [Contribution Ideas](#contribution-ideas)
 - [Example](https://zurb.github.io/tribute/example/)
+
+## Difference between original repository
+
+In this fork fixed [issue](https://github.com/zurb/tribute/pull/256) with selections in iframes. When tribute initialized with froala into iframe then mention list didn't displayed. See this feedle https://jsfiddle.net/wptxyrse/11/.
 
 ## Installing
 
