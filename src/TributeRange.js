@@ -575,34 +575,30 @@ class TributeRange {
         let doc = document.documentElement
         let windowLeft = (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0)
         let windowTop = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0)
-
+        let iframeRect = { x: 0, y: 0, top: 0, bottom: 0, left: 0, right: 0 }
         const {tribute: {current: {element: {ownerDocument}}}} = this
 
         if (ownerDocument !== document) {
-            let frameElement = ownerDocument.defaultView.frameElement;
+            let frameElement = ownerDocument.defaultView.frameElement
 
             if (frameElement) {
-                let iframeRect = frameElement.getBoundingClientRect();
-                if (iframeRect) {
-                    windowTop += iframeRect.y;
-                    windowLeft += iframeRect.x;
-                }
+                iframeRect = frameElement.getBoundingClientRect()
             }
         }
 
         let left = 0
         let top = 0
         if (this.menuContainerIsBody) {
-          left = rect.left
-          top = rect.top
+          left = rect.left + iframeRect.x
+          top = rect.top + iframeRect.y
         } else {
-          left = markerEl.offsetLeft;
-          top = markerEl.offsetTop;
+          left = markerEl.offsetLeft
+          top = markerEl.offsetTop
         }
 
         let coordinates = {
             left: left + windowLeft,
-            top: top + markerEl.offsetHeight + windowTop
+            top: top + markerEl.offsetHeight + windowTop,
         }
         let windowWidth = window.innerWidth
         let windowHeight = window.innerHeight
@@ -612,21 +608,28 @@ class TributeRange {
 
         if (menuIsOffScreen.right) {
             coordinates.left = 'auto'
-            coordinates.right = windowWidth - rect.left - windowLeft
+            coordinates.right = windowWidth - (rect.left + iframeRect.x) - windowLeft
         }
 
-        let parentHeight = this.tribute.menuContainer
-            ? this.tribute.menuContainer.offsetHeight
-            : this.getDocument().body.offsetHeight
+        let parentHeight;
+        if (this.tribute.menuContainer) {
+            parentHeight = this.tribute.menuContainer.offsetHeight;
+        } else {
+            parentHeight = this.getDocument().body.offsetHeight;
+        }
 
+        let parentRect;
         if (menuIsOffScreen.bottom) {
-            let parentRect = this.tribute.menuContainer
-                ? this.tribute.menuContainer.getBoundingClientRect()
-                : this.getDocument().body.getBoundingClientRect()
-            let scrollStillAvailable = parentHeight - (windowHeight - parentRect.top)
+            if (this.tribute.menuContainer) {
+                parentRect = this.tribute.menuContainer.getBoundingClientRect();
+            } else {
+                parentRect = this.getDocument().body.getBoundingClientRect();
+            }
 
-            coordinates.top = 'auto'
-            coordinates.bottom = scrollStillAvailable + (windowHeight - rect.top)
+            let scrollStillAvailable = parentHeight - (windowHeight - parentRect.top);
+
+            coordinates.top = 'auto';
+            coordinates.bottom = scrollStillAvailable + (windowHeight - (rect.top + iframeRect.y));
         }
 
         menuIsOffScreen = this.isMenuOffScreen(coordinates, menuDimensions)

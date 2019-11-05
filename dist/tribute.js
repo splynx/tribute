@@ -1539,18 +1539,21 @@ function () {
       var doc = document.documentElement;
       var windowLeft = (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0);
       var windowTop = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+      var iframeRect = {
+        x: 0,
+        y: 0,
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0
+      };
       var ownerDocument = this.tribute.current.element.ownerDocument;
 
       if (ownerDocument !== document) {
         var frameElement = ownerDocument.defaultView.frameElement;
 
         if (frameElement) {
-          var iframeRect = frameElement.getBoundingClientRect();
-
-          if (iframeRect) {
-            windowTop += iframeRect.y;
-            windowLeft += iframeRect.x;
-          }
+          iframeRect = frameElement.getBoundingClientRect();
         }
       }
 
@@ -1558,8 +1561,8 @@ function () {
       var top = 0;
 
       if (this.menuContainerIsBody) {
-        left = rect.left;
-        top = rect.top;
+        left = rect.left + iframeRect.x;
+        top = rect.top + iframeRect.y;
       } else {
         left = markerEl.offsetLeft;
         top = markerEl.offsetTop;
@@ -1576,16 +1579,29 @@ function () {
 
       if (menuIsOffScreen.right) {
         coordinates.left = 'auto';
-        coordinates.right = windowWidth - rect.left - windowLeft;
+        coordinates.right = windowWidth - (rect.left + iframeRect.x) - windowLeft;
       }
 
-      var parentHeight = this.tribute.menuContainer ? this.tribute.menuContainer.offsetHeight : this.getDocument().body.offsetHeight;
+      var parentHeight;
+
+      if (this.tribute.menuContainer) {
+        parentHeight = this.tribute.menuContainer.offsetHeight;
+      } else {
+        parentHeight = this.getDocument().body.offsetHeight;
+      }
+
+      var parentRect;
 
       if (menuIsOffScreen.bottom) {
-        var parentRect = this.tribute.menuContainer ? this.tribute.menuContainer.getBoundingClientRect() : this.getDocument().body.getBoundingClientRect();
+        if (this.tribute.menuContainer) {
+          parentRect = this.tribute.menuContainer.getBoundingClientRect();
+        } else {
+          parentRect = this.getDocument().body.getBoundingClientRect();
+        }
+
         var scrollStillAvailable = parentHeight - (windowHeight - parentRect.top);
         coordinates.top = 'auto';
-        coordinates.bottom = scrollStillAvailable + (windowHeight - rect.top);
+        coordinates.bottom = scrollStillAvailable + (windowHeight - (rect.top + iframeRect.y));
       }
 
       menuIsOffScreen = this.isMenuOffScreen(coordinates, menuDimensions);
