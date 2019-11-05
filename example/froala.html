@@ -12,36 +12,30 @@
         position: relative;
         padding: 0 25px;
       }
-      .tribute-demo-input {
-        outline: none;
-        border: 1px solid #eee;
-        padding: 3px 5px;
-        border-radius: 2px;
-        font-size: 15px;
-        min-height: 32px;
-        cursor: text;
-      }
-      .tribute-demo-input:focus {
-        border-color: #d1d1d1;
-        background-color: #fbfbfb;
-      }
-      [contenteditable=true]:empty:before{
-        content: attr(placeholder);
-        display: block;
-        color: #ccc;
-      }
 
       .float-right {
         float: right;
       }
+
+      #left_padding {
+        margin-left: 100px;
+      }
     </style>
 
     <!-- Include Editor style. -->
-    <link href="https://cdn.jsdelivr.net/npm/froala-editor@3.0.4/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/froala_style.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/tribute.css" rel="stylesheet" type="text/css" />
+    <link href="css/codemirror.min.css" rel="stylesheet" type="text/css" />
 
     <!-- Include Editor JS files. -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@3.0.4/js/froala_editor.pkgd.min.js"></script>
-    <script src="../dist/tribute.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/codemirror.min.js"></script>
+    <script type="text/javascript" src="js/froala_editor.pkgd.min.js"></script>
+    <script type="text/javascript" src="js/froala_helpers.js"></script>
+    <script type="text/javascript" src="../dist/tribute.js"></script>
+    <script type="text/javascript" src="js/codemirror.xml.min.js"></script>
   </head>
   <body>
     <h1>Bees on parade</h1>
@@ -51,45 +45,115 @@
         <br>Hic deleniti labore autem excepturi, reiciendis sequi sint est eos nihil quos iste praesentium dicta, doloribus libero obcaecati nemo quasi ullam velit? 
         <br>Fugiat, dolorem. Quod similique maxime possimus tempore officia nisi ad?
     </p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit debitis culpa modi impedit quaerat eveniet ipsa saepe aliquid molestias eos?</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit debitis culpa modi impedit quaerat eveniet ipsa saepe aliquid molestias eos?</p>
+    <!-- <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit debitis culpa modi impedit quaerat eveniet ipsa saepe aliquid molestias eos?</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit debitis culpa modi impedit quaerat eveniet ipsa saepe aliquid molestias eos?</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit debitis culpa modi impedit quaerat eveniet ipsa saepe aliquid molestias eos?</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit debitis culpa modi impedit quaerat eveniet ipsa saepe aliquid molestias eos?</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit debitis culpa modi impedit quaerat eveniet ipsa saepe aliquid molestias eos?</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit debitis culpa modi impedit quaerat eveniet ipsa saepe aliquid molestias eos?</p> -->
 
     <!-- Create a tag that we will use as the editable area. -->
     <!-- You can use a div tag as well. -->
-    <textarea></textarea>
+    <div id="left_padding">
+      <textarea id="froala_input"></textarea>
+    </div>
+
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit debitis culpa modi impedit quaerat eveniet ipsa saepe aliquid molestias eos?</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit debitis culpa modi impedit quaerat eveniet ipsa saepe aliquid molestias eos?</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit debitis culpa modi impedit quaerat eveniet ipsa saepe aliquid molestias eos?</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit debitis culpa modi impedit quaerat eveniet ipsa saepe aliquid molestias eos?</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit debitis culpa modi impedit quaerat eveniet ipsa saepe aliquid molestias eos?</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit debitis culpa modi impedit quaerat eveniet ipsa saepe aliquid molestias eos?</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit debitis culpa modi impedit quaerat eveniet ipsa saepe aliquid molestias eos?</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit debitis culpa modi impedit quaerat eveniet ipsa saepe aliquid molestias eos?</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit debitis culpa modi impedit quaerat eveniet ipsa saepe aliquid molestias eos?</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit debitis culpa modi impedit quaerat eveniet ipsa saepe aliquid molestias eos?</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit debitis culpa modi impedit quaerat eveniet ipsa saepe aliquid molestias eos?</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit debitis culpa modi impedit quaerat eveniet ipsa saepe aliquid molestias eos?</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit debitis culpa modi impedit quaerat eveniet ipsa saepe aliquid molestias eos?</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit debitis culpa modi impedit quaerat eveniet ipsa saepe aliquid molestias eos?</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit debitis culpa modi impedit quaerat eveniet ipsa saepe aliquid molestias eos?</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit debitis culpa modi impedit quaerat eveniet ipsa saepe aliquid molestias eos?</p>
 
     <!-- Initialize the editor. -->
     <script>
-      let tribute;
-      new FroalaEditor('textarea', {
+      var config = {
+        key: 'bTYPASIBGMWC1YLMP==',
         iframe: true,
-        events: {
-          initialized: function() {
-            var editor = this;
+        enter: $.FroalaEditor.ENTER_BR,
+        useClasses: true,
+        zIndex: 19,
+        heightMin: 150,
+        heightMax: 1000,
+        htmlExecuteScripts: false,
+        htmlRemoveTags: [],
+        htmlUntouched: true,
+        pasteAllowedStyleProps: [],
+        htmlAllowedTags: ['.*'],
+        entities: '',
+        htmlAllowedAttrs: ['.*'],
+        htmlAllowedEmptyTags: [],
+        codeBeautifierOptions: {
+          end_with_newline: true,
+            indent_inner_html: true,
+            extra_liners: "['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'pre', 'ul', 'ol', 'table', 'dl']",
+            brace_style: 'expand',
+            indent_char: ' ',
+            indent_size: 4,
+            wrap_line_length: 0
+        },
+        allowStyle: false,
+        toolbarButtons: [
+        'bold', 'italic', 'underline',
+        '|', 'formatOL', 'formatUL', 'insertLink',
+        '|', 'color', 'insertTable', '|',
+        'insertImage', 'clearFormatting', 'html',
+        ],
+      };
 
-            tribute = new Tribute({
+      var inputElement = $('#froala_input');
+      var tribute;
+
+      inputElement.on('froalaEditor.initialized', function (e, editor) {
+        setTimeout(function () {
+          inputElement.froalaEditor('size.syncIframe');
+          inputElement.froalaEditor('size.refresh');
+
+          tribute = new Tribute({
               menuContainer: document.body,
-              values: [
-                        { key: 'Phil Heartman', value: 'pheartman' },
-                        { key: 'Gordon', value: 'gramsey' },
-                        { key: 'Jacob', value: 'jacob' },
-                        { key: 'Ethan', value: 'ethan' },
-                        { key: 'Emma', value: 'emma' },
-                        { key: 'Isabella', value: 'isabella' }
-                      ],
+              values: [{"id":"1","name":"Anna Zibert","login":"admin","email":"volodymyr.tsumanchuk@splynx.com","type":"admin","search":"Anna Zibert admin volodymyr.tsumanchuk@splynx.com"},{"id":"2","name":"Splynx admin","login":"splynx","email":"splynx@splynx.com","type":"admin","search":"Splynx admin splynx splynx@splynx.com"},{"id":"3","name":"Manuel Rodriguez Montero","login":"manue","email":"manuel@for.ru","type":"admin","search":"Manuel Rodriguez Montero manue manuel@for.ru"},{"id":"6","name":"Julia Gursberg","login":"alen","email":"julia@gursberg.com","type":"admin","search":"Julia Gursberg alen julia@gursberg.com"},{"id":"8","name":"Anton","login":"anton","email":"anton@malod.ro","type":"admin","search":"Anton anton anton@malod.ro"},{"id":1,"name":"Wunners","login":"","email":"","type":"team","search":"Wunners"},{"id":2,"name":"Zebra","login":"","email":"","type":"team","search":"Zebra"},{"id":3,"name":"Pomidoro","login":"","email":"","type":"team","search":"Pomidoro"},{"id":4,"name":"Kingroom","login":"","email":"","type":"team","search":"Kingroom"},{"id":5,"name":"Pizzarela","login":"","email":"","type":"team","search":"Pizzarela"},{"id":6,"name":"Amorett","login":"","email":"","type":"team","search":"Amorett"},{"id":7,"name":"Flickes","login":"","email":"","type":"team","search":"Flickes"},{"id":10,"name":"Golink","login":"","email":"","type":"team","search":"Golink"}],
               selectTemplate: function(item) {
-                return '<span class="fr-deletable fr-tribute">' + item.original.key + '</a></span>';
-              }
+                return '<span class="fr-deletable fr-tribute">' +
+                            '<a ' +
+                                'href="#"' +
+                                'onclick="return false;"' +
+                                'class="froala-mention-inserted"' +
+                                'title="' + item.original.name + ' ' + item.original.email + '"' +
+                                'data-id="' + item.original.id + '"' +
+                                'data-type=' + item.original.type + '>' +
+                                    item.original.name +
+                            '</a>' +
+                        '</span>';
+              },
+              lookup: function (item) {
+                return item.search;
+              },
             });
 
-            tribute.attach(editor.el);
+            tribute.attach(editor.$el);
 
             editor.events.on('keydown', function(e) {
-              if (e.which == FroalaEditor.KEYCODE.ENTER && tribute.isActive) {
+              if (e.which == 13 && tribute.isActive) {
                 return false;
               }
             }, true);
-          }
-        }
-      });
+        }, 250);
+      })
+      .on('froalaEditor.contentChanged', function () {
+        $(inputElement).trigger('change');
+      }).froalaEditor(config);
     </script>
   </body>
 </html>
